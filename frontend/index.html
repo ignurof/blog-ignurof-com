@@ -9,25 +9,34 @@
     <body>
         <main>
             <header>
-                <h1>blog</h1>
-                <a href="javascript:void(0);" class="icon" onclick="showMenu()">
-                    <i class="hamburger-menu"></i>
-                </a>
+                <section>
+                    <h1>blog.ignurof</h1>
+                    <button class="hamburger" onclick="showMenu()">
+                        <svg viewBox="0 0 100 100" width="50" fill="#000000">
+                            <rect width="80" height="10" x="10" y="25">
+                            </rect>
+                            <rect width="80" height="10" x="10" y="45">
+                            </rect>
+                            <rect width="80" height="10" x="10" y="65">
+                            </rect>
+                        </svg>
+                    </button>
+                </section>
+                <nav class="hamburger-menu">
+                    <ul>
+                        <li>
+                            <a href="Timeline" target="_blank" rel="noreferrer">link1</a>
+                        </li>
+                        <li>
+                            <a href="Archive" target="_blank" rel="noreferrer">link2</a>
+                        </li>
+                        <li>
+                            <a href="Contact" target="_blank" rel="noreferrer">link3</a>
+                        </li>
+                    </ul>
+                </nav>
             </header>
 
-            <nav>
-                <ul>
-                    <li>
-                        <a href="#" target="_blank" rel="noreferrer">link1</a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank" rel="noreferrer">link2</a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank" rel="noreferrer">link3</a>
-                    </li>
-                </ul>
-            </nav>
 
             <article>
                 <h1>Title</h1>
@@ -40,4 +49,5 @@
             </footer>
         </main>
     </body>
+    <script src="header.js"></script>
 </html>
