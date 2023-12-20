@@ -19,6 +19,7 @@ Typographic tweaks!
 body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    font-family: sans-serif;
 }
 /*
 5. Improve media defaults
@@ -55,38 +56,63 @@ p, h1, h2, h3, h4, h5, h6 {
         width: 100%;
     }
 
-    header {
-        display: flex;
-        flex-direction: column;
-        border-bottom: 1px solid black;;
-    }
-
-    header section {
+    nav {
         display: flex;
         flex-direction: row;
+        background-color: red;
+        border-bottom: 2px solid black;
+        justify-content: space-between;
+        background-color: gray;
+        color: white;
     }
 
-    header h1 {
+    nav h1 {
         align-self: center;
-        padding-left: 2em;
+        padding-left: 0.6em;
     }
 
     .hamburger {
         display: inline-block;
         border: none;
-        margin-left: auto;
         background-color: transparent;
     }
     .hamburger:hover {
         cursor: pointer;
     }
 
-    nav.hamburger-menu {
-        display: none;
-    }
-
     nav ul {
         list-style: none;
         padding: 0;
+    }
+
+    nav ul.hamburger-menu {
+        display: none;
+    }
+
+    section.timeline {
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(black, white, white, 70%, white);
+    }
+    section.timeline h1 {
+        align-self: center;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        font-size: 3em;
+    }
+    .article-list {
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+    .article-list article {
+        padding-bottom: 2em;
+    }
+
+
+
+    footer {
+        bottom: 0;
+        text-align: center;
+        width: 100%;
     }
 }
