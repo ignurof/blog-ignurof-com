@@ -1,0 +1,18 @@
+/* Order of importance - anything below the first overrides values of same type */ 
+@media (min-width: 320px) {
+    article {
+        display: flex;
+        flex-direction: column;
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+    article h1 {
+        align-self: center;
+        padding-top: 2em;
+        padding-bottom: 2em;
+    }
+
+    p {
+        padding-bottom: 2em;
+    }
+}
