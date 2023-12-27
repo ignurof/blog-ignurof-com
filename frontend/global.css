@@ -96,9 +96,14 @@ footer a{
         border-bottom: 1px solid black;
     }
 
-    nav h1 {
+    nav header a {
         align-self: center;
         padding-left: 0.6em;
+        border: none;
+        font-size: 1em;
+    }
+    nav header a:hover {
+        color: black;
     }
 
     .hamburger {
