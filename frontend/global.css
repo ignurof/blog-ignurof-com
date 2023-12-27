@@ -127,14 +127,15 @@ footer a{
     section {
         padding-left: 1em;
         padding-right: 1em;
+        align-items: center;
     }
     section h1 {
-        align-self: center;
         padding-top: 2em;
         padding-bottom: 2em;
     }
 
     footer {
+        position: relative;
         bottom: 0;
         text-align: center;
         width: 100%;
