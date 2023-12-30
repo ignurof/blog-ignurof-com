@@ -40,7 +40,11 @@
             
             <section class="archive">
                 <h1><u>Archive</u></h1>
-                <p>TODO: List all articles, based on year month day date sorting.</p>
+                <label for="year">Year</label>
+                <select name="year">
+                    <option value="2023" onclick="showToggle(2023)">2023</option>
+                </select>
+                <ul id="article-list"></ul>
             </section>
 
             <footer>
@@ -49,4 +53,5 @@
         </main>
     </body>
     <script src="js/nav.js"></script>
+    <script src="js/archive.js"></script>
 </html>

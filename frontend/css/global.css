@@ -52,6 +52,11 @@ section {
     display: flex;
     flex-direction: column;
 }
+section ul {
+    display: flex;
+    flex-direction: column;
+    background-color: blue;
+}
 
 ul {
     list-style: none;
