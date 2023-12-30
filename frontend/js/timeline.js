@@ -1,25 +1,29 @@
-const helloWorld = () => {
-    console.log("Hello, World!");
-    let tempVar = "This is a dynamic type string";
-    console.log(tempVar);
+const populateTimeline = () => {
+    let domArticleList = document.getElementsByClassName("article-list");
+    
+    // TODO: Fetch from server
+    let articles = getList();
+
+    for (let i = 0; i < articles.length; i++) {
+        const element = articles[i];
+
+        //const articleURL = new URL("https://blog.ignurof.com/article.html");
+        //articleURL.searchParams.append("id", 0);
+        //<a href="${articleURL.href}">Go to article</a>
+        domArticleList[0].innerHTML += `
+            <article>
+                <h2>${element.title}</h2>
+                <p>${element.paragraphs[0].text}</p>
+                <a href="article.html?id=${element.id}">Go to article</a>
+            </article>       
+        `;
+    }
 }
 
-// I can fetch the file I think when the site is actually hosted
-// use the json response article format to fill the article.html tags
-// fetch the specific article based on the article link the user has clicked on
-// article.html should basically just be a template that gets filled with values fetched here
-// above description is only valid for specific articles though
-// this is timeline.js and I was going to fetch the list of all the article names from articles directory
-// and then with that list, populate timeline
-const fetchFile = async () => {
-    const request = await fetch("https://blog.ignurof.com/articles/hello_world.json", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-        },
-    });
-    const response = await request.json(); 
-    console.log(response);
-}
-
-fetchFile();
+/*
+<article>
+    <h2>Title</h2>
+    <p>First 135 letters of the article Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat...</p>
+    <a href="article.html">Go to article</a>
+</article>
+*/
