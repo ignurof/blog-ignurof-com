@@ -1,5 +1,3 @@
-let domArchive = document.getElementsByClassName("archive");
-
 const currentYear = 2023;
 
 const showCurrentYear = () => {
@@ -19,6 +17,19 @@ const showCurrentYear = () => {
 }
 
 showCurrentYear();
+
+const selectMonth = (month) => {
+    console.log(month);
+    switch (month) {
+        case 1:
+            console.log(month);
+            break;
+
+        default:
+            console.error("selectMonth error");
+            break;
+    }
+}
 
 /*
 <section class="archive">
