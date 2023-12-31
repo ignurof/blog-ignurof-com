@@ -1,3 +1,15 @@
+const url = "http://localhost:3420";
+const options = {
+    method: "GET",
+};
+
+const getList = async () => {
+    let request = await fetch(url, options);
+    let response = await request.json();
+    
+    console.log(response);
+}
+
 const populateTimeline = () => {
     let domArticleList = document.getElementsByClassName("article-list");
     
@@ -19,6 +31,8 @@ const populateTimeline = () => {
         `;
     }
 }
+
+populateTimeline();
 
 /*
 <article>
