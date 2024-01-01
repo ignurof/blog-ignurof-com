@@ -23,8 +23,9 @@ NOTE: When using this middleware as an application level middleware (for example
 app.use(cors());
 
 // Start server and listen to incoming connections
-app.listen(port, () => {
+app.listen(port, async () => {
     console.log(`Server listening on port: ${port}`);
+    await articles.setup();
 });
 
 app.get("/", (request, response) => {
