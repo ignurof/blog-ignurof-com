@@ -1,0 +1,46 @@
+# sudo systemctl daemon-reload
+# sudo systemctl stop blog-ignurof-com-backend.service
+# sudo systemctl start blog-ignurof-com-backend.service
+# sudo systemctl status blog-ignurof-com-backend.service
+
+[Unit]
+Description=blog-ignurof-com-backend
+
+# delay unit activation until another unit has started
+After=network.target
+
+
+StartLimitIntervalSec=0
+
+
+[Service]
+Type=simple
+
+
+Restart=always
+
+
+RestartSec=1
+
+
+User=ignurof
+
+# happens before main program
+ExecStartPre=
+
+# main program
+ExecStart=/usr/bin/node /home/ignurof/development/blog-ignurof-com/backend/main.js
+
+# happens after main program
+ExecStartPost
+
+# happens when service shuts down
+ExecStop=
+
+# reload happens only on reload cmd, allow for example re-config of program files or something
+ExecReload=
+
+
+[Install]
+# run service at startup after most required units are loaded
+WantedBy=multi-user.target

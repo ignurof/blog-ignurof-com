@@ -51,7 +51,7 @@ const readArticlesFromDir = async () => {
     let fileArticles = [];
 
     try{
-        const dir = await fs.opendir("./articles/");
+        const dir = await fs.opendir("/home/ignurof/development/blog-ignurof-com/backend/articles/");
         for await (file of dir){
             fileNames.push(file.name);
         }
@@ -62,7 +62,7 @@ const readArticlesFromDir = async () => {
 
     for(let i = 0; i < fileNames.length; i++){
         try{
-            let filePath = `./articles/${fileNames[i]}`;
+            let filePath = `/home/ignurof/development/blog-ignurof-com/backend/articles/${fileNames[i]}`;
             let fileContentsBuffer = await fs.readFile(filePath);
             let fileContents = JSON.parse(fileContentsBuffer);
             fileArticles.push({
