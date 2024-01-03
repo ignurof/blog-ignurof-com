@@ -1,27 +1,9 @@
-const url = "http://localhost:3420";
-const options = {
-    method: "GET",
-};
-
-const getList = async () => {
-    let request = await fetch(url, options);
-    let response = await request.json();
-    
-    console.log(response);
-}
-
-const populateTimeline = () => {
+const populateTimeline = (articles) => {
     let domArticleList = document.getElementsByClassName("article-list");
-    
-    // TODO: Fetch from server
-    let articles = getList();
 
     for (let i = 0; i < articles.length; i++) {
         const element = articles[i];
 
-        //const articleURL = new URL("https://blog.ignurof.com/article.html");
-        //articleURL.searchParams.append("id", 0);
-        //<a href="${articleURL.href}">Go to article</a>
         domArticleList[0].innerHTML += `
             <article>
                 <h2>${element.title}</h2>
@@ -32,12 +14,22 @@ const populateTimeline = () => {
     }
 }
 
-populateTimeline();
+const getList = async () => {
+    const url = "http://localhost:3420/articles/list";
+    const options = {
+        method: "GET",
+    };
+    
+    let request = await fetch(url, options);
+    let response = await request.json();
 
-/*
-<article>
-    <h2>Title</h2>
-    <p>First 135 letters of the article Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat...</p>
-    <a href="article.html">Go to article</a>
-</article>
-*/
+    populateTimeline(response);
+}
+
+(async () => {
+    try {
+        await getList();
+    } catch (error) {
+       console.error(error); 
+    }
+})();
