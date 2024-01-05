@@ -24,6 +24,18 @@ router.get("/list", (request, response) => {
     response.json(getArticles());
 });
 
+router.get("/list/:year", (request, response) => {
+    let articlesFromRelevantYear = [];
+
+    for(let i = 0; i < getArticles().length; i++){
+        if(getArticleById(i).date.year != request.params.year) return;
+
+        articlesFromRelevantYear.push(getArticleById(i));
+    }
+
+    response.json(articlesFromRelevantYear);
+});
+
 // order is important, if this is placed above /list, then this would get called and print id: "list"
 router.get("/:id", (request, response) => {
     // TODO: Sanitize more
