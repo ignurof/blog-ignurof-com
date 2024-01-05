@@ -1,7 +1,14 @@
 {
     "title": "Hello, World!",
     "paragraphs": [
-        {"text": "This is some text about the article", "img": "full_path_to_image.png"}
+        {
+            "text": "This is some text about the article", 
+            "img": "https://picsum.photos/seed/ignurof_hello_world_x/200.webp"
+        },
+        {
+            "text": "A second paragraph has appeared!",
+            "img": "https://picsum.photos/seed/ignurof_hello_world_y/200.webp"
+        }
     ],
     "date": {
         "year": 2023,
