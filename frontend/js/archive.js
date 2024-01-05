@@ -1,45 +1,44 @@
-const currentYear = 2023;
+// TODO: Find out how to call thyme.c from server and respond with it
+const currentYear = 2024;
 
-const showCurrentYear = () => {
+const getArticlesByYear = async (year) => {
+    const request = await fetch(`http://localhost:3420/articles/list/${year}`);
+    const response = await request.json();
+
+    return response;
+}
+
+const populateArticleList = async (year) => {
     let domArticleList = document.getElementById("article-list");
+    domArticleList.innerHTML = "";
 
-    let articleListTest = [1, 2, 3];
+    const articles = await getArticlesByYear(year);
 
-    for (let i = 0; i < articleListTest.length; i++) {
-        const element = articleListTest[i];
+    for (let i = 0; i < articles.length; i++) {
+        const title = articles[i];
 
         domArticleList.insertAdjacentHTML("beforeend", `
             <li>
-                <a href="article.html?id=0" target="_blank" rel="noreferrer">Article Title Here</a>
+                <a href="article.html?id=${title.id}" target="_blank" rel="noreferrer">${title.title}</a>
             </li>
         `);
     }
 }
 
-showCurrentYear();
+(async () => {
+    try{
+        await populateArticleList(currentYear);
+    }
+    catch(error){
+        console.error(error);
+    }
+})();
 
-const selectMonth = (month) => {
-    console.log(month);
-    switch (month) {
-        case 1:
-            console.log(month);
-            break;
-
-        default:
-            console.error("selectMonth error");
-            break;
+const selectYear = async (year) => {
+    try{
+       await populateArticleList(year); 
+    }
+    catch(error){
+       console.error(error); 
     }
 }
-
-/*
-<section class="archive">
-    <h1><u>Archive</u></h1>
-    <label for="year">Year</label>
-    <select name="year">
-        <option value="2023" onclick="showToggle(2023)">2023</option>
-    </select>
-    <!-- <button onclick="showToggle(2023)">2023</button> -->
-    <ul id="article-list"></ul>
-</section>
-*/
-
