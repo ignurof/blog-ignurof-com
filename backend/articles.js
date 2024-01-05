@@ -24,7 +24,9 @@ router.get("/list", (request, response) => {
     response.json(getArticles());
 });
 
-router.get("/list/:year", (request, response) => {
+router.get("/list/year-:year", (request, response) => {
+    if(!isNumericIntFromString(request.params.year)) return console.error("not numeric int");
+
     let articlesFromRelevantYear = [];
 
     for(let i = 0; i < getArticles().length; i++){
@@ -36,9 +38,24 @@ router.get("/list/:year", (request, response) => {
     response.json(articlesFromRelevantYear);
 });
 
-// order is important, if this is placed above /list, then this would get called and print id: "list"
+router.get("/list/:count", (request, response) => {
+    if(!isNumericIntFromString(request.params.count)) return console.error("not numeric int");
+
+    let articlesFromCount = []; 
+    let count = 0;
+
+    for(let i = getArticles().length - 1; i < getArticles().length; i--){
+        if(count == 10) break;
+
+        articlesFromCount.push(getArticleById(i)); 
+
+        count++;
+    }
+
+    response.json(articlesFromCount);
+});
+
 router.get("/:id", (request, response) => {
-    // TODO: Sanitize more
     if(!isNumericIntFromString(request.params.id)) return console.error("not numeric int");
      
     response.json(getArticleById(request.params.id));
