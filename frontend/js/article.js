@@ -1,14 +1,6 @@
-const printURLSearchParams = () => {
-    const params = new URL(document.location).searchParams;
-    const searchParams = new URLSearchParams(params);
-    console.log(searchParams);
-}
-
-printURLSearchParams();
-
-let article = {};
-
-const articleTemplate = {
+/*
+    * Article Template
+{
     title: "This is a title",
     paragraphs: [
         {text: "", img: ""},
@@ -22,15 +14,18 @@ const articleTemplate = {
     },
     id: 0,
 };
+*/
 
-// This is just a mockup for testing!!
-const articleOne = articleTemplate;
-articleOne.title = "Hello, World!";
-articleOne.paragraphs[0].text = "This is the paragraph content text. Scaled down to XXX amount of letters to keep it nice and short.";
-articleOne.paragraphs[0].img = "https://picsum.photos/200";
-article = articleOne;
+const getURLSearchParams = () => {
+    return new URLSearchParams(new URL(document.location).searchParams);
+}
 
-const populateArticle = () => {
+const printURLSearchParams = () => {
+    console.log(getURLSearchParams());
+}
+
+const populateArticle = (article) => {
+    console.log(article);
     let domArticle = document.getElementsByTagName("article");
 
     domArticle[0].insertAdjacentHTML("beforeend", `<h1><u>${article.title}</u></h1>`);
@@ -46,4 +41,23 @@ const populateArticle = () => {
     }
 }
 
-populateArticle();
+const getArticle = async (id) => {
+    const request = await fetch(`http://localhost:3420/articles/${id}`);
+    const response = await request.json();
+
+    return response;
+}
+
+(async () => {
+    if(getURLSearchParams().has("id")){
+        try{
+            populateArticle(await getArticle(getURLSearchParams().get("id")));
+        }
+        catch(error){
+            console.error(error);
+        }    
+    }
+    else{
+        console.error("incorrect url search parameters");
+    }
+})();
