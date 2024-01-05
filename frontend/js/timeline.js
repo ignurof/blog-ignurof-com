@@ -1,8 +1,12 @@
+const articlesCount = 10;
+
+// TODO: Sort in descending order ( new to old )
 const populateTimeline = (articles) => {
     let domArticleList = document.getElementsByClassName("article-list");
 
     for (let i = 0; i < articles.length; i++) {
         const element = articles[i];
+        if(element == null) break;
 
         domArticleList[0].innerHTML += `
             <article>
@@ -15,21 +19,16 @@ const populateTimeline = (articles) => {
 }
 
 const getList = async () => {
-    const url = "http://localhost:3420/articles/list";
-    const options = {
-        method: "GET",
-    };
-    
-    let request = await fetch(url, options);
+    let request = await fetch(`http://localhost:3420/articles/list/${articlesCount}`);
     let response = await request.json();
 
-    populateTimeline(response);
+    return response; 
 }
 
 (async () => {
     try {
-        await getList();
+        populateTimeline(await getList());
     } catch (error) {
-       console.error(error); 
+        console.error(error);        
     }
 })();

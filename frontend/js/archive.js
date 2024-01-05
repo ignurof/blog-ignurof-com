@@ -2,7 +2,7 @@
 const currentYear = 2024;
 
 const getArticlesByYear = async (year) => {
-    const request = await fetch(`http://localhost:3420/articles/list/${year}`);
+    const request = await fetch(`http://localhost:3420/articles/list/year-${year}`);
     const response = await request.json();
 
     return response;
