@@ -12,33 +12,18 @@ const populateArticleList = async (year) => {
     let domArticleList = document.getElementById("article-list");
     domArticleList.innerHTML = "";
 
-    const articles = await getArticlesByYear(year);
+    try {
+        const articles = await getArticlesByYear(year);
+        for (let i = 0; i < articles.length; i++) {
+            const title = articles[i];
 
-    for (let i = 0; i < articles.length; i++) {
-        const title = articles[i];
-
-        domArticleList.insertAdjacentHTML("beforeend", `
-            <li>
-                <a href="article.html?id=${title.id}" target="_blank" rel="noreferrer">${title.title}</a>
-            </li>
-        `);
-    }
-}
-
-(async () => {
-    try{
-        await populateArticleList(currentYear);
-    }
-    catch(error){
+            domArticleList.insertAdjacentHTML("beforeend", `
+                <li>
+                    <a href="article.html?id=${title.id}" target="_blank" rel="noreferrer">${title.title}</a>
+                </li>
+            `);
+        }
+    } catch (error) {
         console.error(error);
-    }
-})();
-
-const selectYear = async (year) => {
-    try{
-       await populateArticleList(year); 
-    }
-    catch(error){
-       console.error(error); 
     }
 }
