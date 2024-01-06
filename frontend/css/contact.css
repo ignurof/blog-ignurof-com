@@ -1,6 +1,4 @@
 /* Since specific css is loaded after global.css, this overrides the values found in global */
 @media (min-width: 320px) {
-    footer {
-        position: absolute;
-    }
+    
 }
