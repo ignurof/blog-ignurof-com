@@ -74,8 +74,6 @@ a:hover {
 
 footer a{
     border: 0;
-    background: linear-gradient(#e66465, #9198e5);
-    color: green;
 }
 
 /* Order of importance - anything below the first overrides values of same type */ 
