@@ -72,15 +72,20 @@ a:hover {
     color: gray;
 }
 
+footer {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    padding-top: 4em;
+}
 footer a{
     border: 0;
 }
 
 /* Order of importance - anything below the first overrides values of same type */ 
+/* Mobile first but account for any potential size by having this */
 @media (min-width: 320px) {
-    body {
-    }
-
     main {
         width: 100%;
         min-height: 100vh;
@@ -141,12 +146,34 @@ footer a{
         padding-top: 2em;
         padding-bottom: 2em;
     }
+}
 
-    footer {
-        position: absolute;
-        bottom: 0;
-        text-align: center;
-        width: 100%;
-        padding-top: 4em;
-    }
+/* Mobile screens */
+@media (min-width: 320px) and (orientation: portrait) {
+}
+@media (min-width: 320px) and (orientation: landscape) {
+}
+
+/* Larger mobile screens and small tablets */
+@media (min-width: 768px) and (max-width: 991px) and (orientation: portrait) {
+}
+@media (min-width: 768px) and (max-width: 991px) and (orientation: landscape) {
+}
+
+/* Tablets and small desktops */
+@media (min-width: 992px) and (max-width: 1199px) and (orientation: portrait) {
+}
+@media (min-width: 992px) and (max-width: 1199px) and (orientation: landscape) {
+}
+
+/* Medium desktops */
+@media (min-width: 1200px) and (max-width: 1439px) and (orientation: portrait) {
+}
+@media (min-width: 1200px) and (max-width: 1439px) and (orientation: landscape) {
+}
+
+/* Large desktops and widescreen monitors */
+@media (min-width: 1440px) and (orientation: portrait) {
+}
+@media (min-width: 1440px) and (orientation: landscape) {
 }
